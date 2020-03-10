@@ -1,0 +1,27 @@
+
+EXECUTE AS USER = 'Pharmacist1';
+SELECT * FROM Hospital.vwMedication;
+
+EXECUTE AS USER = 'Pharmacist2';
+SELECT * FROM Hospital.vwMedication;
+
+EXECUTE AS USER = 'Pharmacist3';
+SELECT * FROM Hospital.vwMedication;
+
+EXECUTE AS USER = 'Doctor1';
+SELECT * FROM Hospital.Medication 
+SELECT * FROM Hospital.Patient 
+
+EXECUTE AS USER = 'Nurse1';
+UPDATE Hospital.Patient
+SET Doctor_ID = 4 
+WHERE ID = 2;
+
+EXECUTE AS USER = 'Doctor2';
+INSERT INTO Hospital.Patient(ID,Name,Disease,Doctor_ID)
+VALUES( 7, 'Patient7', 'Jaundice', 5 )
+
+INSERT INTO Hospital.Medication(Med_ID, Patient_ID,Name,Disease,Doctor_ID,Medicine1,Medicine2,Pharmacist_ID)
+VALUES( 7, 7,'Patient7','Jaundice', 1, 'acetomine', NULL,2) --Successfully inserted
+
+SELECT * FROM Hospital.Medication;

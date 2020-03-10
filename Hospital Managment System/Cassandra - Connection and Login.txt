@@ -1,0 +1,25 @@
+
+Opening cassandra
+
+Type cassandra in adminitrator cmd
+type nodetool in another cmd
+
+type cqlsh in another cmd
+
+Connection
+-- Open server 
+Cassandra
+
+--Client
+Login
+cqlsh localhost -u cassandra -p admin
+create user admin with password 'myapp' superuser;
+alter cassandra with password admin
+
+
+cqlsh localhost -u admin -p myapp
+cqlsh localhost -u pharmacist1 -p pharmacist
+cqlsh localhost -u doctor1 -p doctor
+
+
+

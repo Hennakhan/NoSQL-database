@@ -1,0 +1,50 @@
+
+Test cases
+USe hospital
+db.getCollectionInfos() 
+
+Login as Pharmacist
+mongo --port 27017 -u "Pharmacist01" -p "pharma" --authenticationDatabase "Hospital" 
+
+db.vwMedication.find()
+db.Medication.find()
+
+Login as Nurse
+db.auth("Nurse01", "nurse" )
+db.Medication.find()
+db.vwMedication.find()
+
+/// Inserted
+db.Patient.insert(
+	{
+	'name':'patient06',
+	'born':2001,
+	'disease':'Jaundice',
+	'doctor_id':'Doctor05'
+	})
+
+///Not Authorised
+db.Medication.insert(
+	{
+		'name':'Medication01_Pat06',
+		'patient_id':'Patient06',
+		'disease':'Jaundice',
+		'doctor_id':'Doctor05',
+		'medicine': 'acetaminophen, ',
+		'pharmacist_id':'Pharmacist05'
+	})
+	
+Login as doctor
+db.auth("Doctor01", "doctor" )
+
+//works
+db.Medication.insert(
+	{
+		'name':'Medication01_Pat06',
+		'patient_id':'Patient06',
+		'disease':'Jaundice',
+		'doctor_id':'Doctor05',
+		'medicine': 'acetaminophen, ',
+		'pharmacist_id':'Pharmacist05'
+	})
+	

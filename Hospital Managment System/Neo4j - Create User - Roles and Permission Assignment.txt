@@ -1,0 +1,91 @@
+﻿
+--Commands Create User
+
+--CALL dbms.security.createUser(‘username’, ‘password’)
+
+CALL dbms.security.createUser('pharma01', 'pass01')
+CALL dbms.security.createUser('pharma02', 'pass02')
+CALL dbms.security.createUser('pharma03', 'pass03')
+CALL dbms.security.createUser('pharma04', 'pass04')
+CALL dbms.security.createUser('pharma05', 'pass05')
+
+CALL dbms.security.createUser('Nurse01', 'Nurse123')
+CALL dbms.security.createUser('Nurse02', 'Nurse153')
+CALL dbms.security.createUser('Nurse03', 'Nurse453')
+CALL dbms.security.createUser('Nurse04', 'Nurse783')
+CALL dbms.security.createUser('Nurse05', 'Nurse193')
+
+CALL dbms.security.createUser('Doctor01', 'doc123')
+CALL dbms.security.createUser('Doctor02', 'doc153')
+CALL dbms.security.createUser('Doctor03', 'doc453')
+CALL dbms.security.createUser('Doctor04', 'doc783')
+CALL dbms.security.createUser('Doctor05', 'doc193')
+
+--Create Custom role 
+
+CALL dbms.security.createRole('RoleName')
+CALL dbms.security.createRole('Pharmacist')
+CALL dbms.security.createRole('Doctor')
+CALL dbms.security.createRole('Nurse')
+
+--Assign permission to role:
+
+ (Pharmacist { type: 'role', name: 'Pharmacist' }),
+
+	Pharmacist-[r1:BELONGS_TO]->reader,
+
+(Doctor { type: 'role', name: 'Doctor' }),
+
+	Doctor-[r1:BELONGS_TO]->publisher,
+
+(Nurse { type: 'role', name: 'Nurse' }),
+
+	Nurse-[r1:BELONGS_TO]->reader,
+
+
+--Assign Roles to the users
+
+CALL dbms.security.addRoleToUser(‘Role’, 'username')
+CALL dbms.security.addRoleToUser('pharmacist', 'pharma01')
+CALL dbms.security.addRoleToUser('pharmacist', 'pharma02')
+CALL dbms.security.addRoleToUser('pharmacist', 'pharma03')
+CALL dbms.security.addRoleToUser('pharmacist', 'pharma04')
+CALL dbms.security.addRoleToUser('pharmacist', 'pharma05')
+
+CALL dbms.security.addRoleToUser('Doctor', 'Doctor01')
+CALL dbms.security.addRoleToUser('Doctor', 'Doctor02')
+CALL dbms.security.addRoleToUser('Doctor', 'Doctor03')
+CALL dbms.security.addRoleToUser('Doctor', 'Doctor04')
+CALL dbms.security.addRoleToUser('Doctor', 'Doctor05')
+
+CALL dbms.security.addRoleToUser('Nurse', 'Nurse01')
+CALL dbms.security.addRoleToUser('Nurse', 'Nurse02') 
+CALL dbms.security.addRoleToUser('Nurse', 'Nurse03')
+CALL dbms.security.addRoleToUser('Nurse', 'Nurse04')
+CALL dbms.security.addRoleToUser('Nurse', 'Nurse05')
+
+--Assigning built in roles again
+CALL dbms.security.addRoleToUser(‘Role’, 'username')
+CALL dbms.security.addRoleToUser('Reader', 'pharma01')
+CALL dbms.security.addRoleToUser('Reader', 'pharma02')
+CALL dbms.security.addRoleToUser('Reader', 'pharma03')
+CALL dbms.security.addRoleToUser('Reader', 'pharma04')
+CALL dbms.security.addRoleToUser('Reader', 'pharma05')
+
+CALL dbms.security.addRoleToUser('Editor', 'Doctor01')
+CALL dbms.security.addRoleToUser('Editor', 'Doctor02')
+CALL dbms.security.addRoleToUser('Editor', 'Doctor03')
+CALL dbms.security.addRoleToUser('Editor', 'Doctor04')
+CALL dbms.security.addRoleToUser('Editor', 'Doctor05')
+
+CALL dbms.security.addRoleToUser('Reader', 'Nurse01')
+CALL dbms.security.addRoleToUser('Reader', 'Nurse02') 
+CALL dbms.security.addRoleToUser('Reader', 'Nurse03')
+CALL dbms.security.addRoleToUser('Reader', 'Nurse04')
+CALL dbms.security.addRoleToUser('Reader', 'Nurse05')
+
+--Blacklist property to certain roles
+
+dbms.security.property_level.enabled=true
+dbms.security.property_level.blacklist=\
+  pharmacist=disease,patient_ID;\

@@ -1,0 +1,13 @@
+--Authenticating DB
+
+--Commands to start server
+mongod
+mongod --auth --port 27017 --dbpath /data/db1
+shell
+
+mongo --port 27017 -u "myUserAdmin" -p "abc123" --authenticationDatabase "admin"
+mongo --port 27017 -u "Nurse01" -p "nurse" --authenticationDatabase "Hospital" 
+mongo --port 27017 -u "Pharmacist01" -p "pharma" --authenticationDatabase "Hospital" 
+mongo --port 27017 -u "Doctor01" -p "doctor" --authenticationDatabase "Hospital" 
+
+USe hospital

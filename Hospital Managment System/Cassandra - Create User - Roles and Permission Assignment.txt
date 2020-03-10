@@ -1,0 +1,54 @@
+CREATE ROLE Doctor;
+CREATE ROLE Nurse;
+CREATE ROLE Pharmacist;
+
+CREATE ROLE Doctor1 WITH Login = true and password = 'doctor';
+CREATE ROLE Doctor2 WITH Login = true and password = 'doctor';
+CREATE ROLE Doctor3 WITH Login = true and password = 'doctor';
+CREATE ROLE Doctor4 WITH Login = true and password = 'doctor';
+CREATE ROLE Doctor5 WITH Login = true and password = 'doctor';
+
+CREATE ROLE Nurse1 WITH Login = true and password = 'nurse';
+CREATE ROLE Nurse2 WITH Login = true and password = 'nurse';
+CREATE ROLE Nurse3 WITH Login = true and password = 'nurse';
+CREATE ROLE Nurse4 WITH Login = true and password = 'nurse';
+CREATE ROLE Nurse5 WITH Login = true and password = 'nurse';
+
+CREATE ROLE Pharmacist1 WITH Login = true and password = 'pharmacist';
+CREATE ROLE Pharmacist2 WITH Login = true and password = 'pharmacist';
+CREATE ROLE Pharmacist3 WITH Login = true and password = 'pharmacist';
+CREATE ROLE Pharmacist4 WITH Login = true and password = 'pharmacist';
+CREATE ROLE Pharmacist5 WITH Login = true and password = 'pharmacist';
+
+GRANT Doctor TO Doctor1;
+GRANT Doctor TO Doctor2;
+GRANT Doctor TO Doctor3;
+GRANT Doctor TO Doctor4;
+GRANT Doctor TO Doctor5;
+
+GRANT Nurse TO Nurse1;
+GRANT Nurse TO Nurse2;
+GRANT Nurse TO Nurse3;
+GRANT Nurse TO Nurse4;
+GRANT Nurse TO Nurse5;
+
+GRANT Pharmacist TO Pharmacist1;
+GRANT Pharmacist TO Pharmacist2;
+GRANT Pharmacist TO Pharmacist3;
+GRANT Pharmacist TO Pharmacist4;
+GRANT Pharmacist TO Pharmacist5;
+
+Grant select on Hospital.Medication To Doctor;
+Grant select on Hospital.Medication To Pharmacist;
+Grant select on Hospital.Medication To Nurse;
+Grant Modify on Hospital.Medication To Doctor;
+Grant Modify on Hospital.Patient To Doctor;
+Grant Select on Hospital.Patient To Doctor;
+Grant Select on Hospital.Patient To Nurse;
+
+RESTRICT ROWS ON Hospital.vwMedication USING Pharmacist_ID;
+GRANT SELECT ON 5 ROWS IN Hospital.vwMedication TO Pharmacist5;
+
+
+
+

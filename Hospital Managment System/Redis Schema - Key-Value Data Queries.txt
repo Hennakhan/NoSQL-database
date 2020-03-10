@@ -1,0 +1,114 @@
+
+--Storing data in HashMap in form of key value pair 
+
+--Doctors table
+HMSET Doctor1 name "Doctor1" 
+HMSET Doctor1 degree "MD" 
+HMSET Doctor1 born "1967" 
+
+HMSET Doctor2 name "Doctor2" 
+HMSET Doctor2 degree "MBBS" 
+HMSET Doctor2 born "1981" 
+
+HMSET Doctor3 name "Doctor3" 
+HMSET Doctor3 degree "MD" 
+HMSET Doctor3 born "1991" 
+
+HMSET Doctor4 name "Doctor4" 
+HMSET Doctor4 degree "MD" 
+HMSET Doctor4 born "1987" 
+
+HMSET Doctor5 name "Doctor5" 
+HMSET Doctor5 degree "MD" 
+HMSET Doctor5 born "1969"
+
+--Nurse table
+HMSET Nurse1 name "Nurse1" 
+HMSET Nurse2 name "Nurse2"  
+HMSET Nurse3 name "Nurse3"  
+HMSET Nurse4 name "Nurse4"  
+HMSET Nurse5 name "Nurse5"  
+
+--Pharmacist table
+HMSET Pharmacist1 name "Pharmacist1"   
+HMSET Pharmacist2 name "Pharmacist2"   
+HMSET Pharmacist3 name "Pharmacist3"   
+HMSET Pharmacist4 name "Pharmacist4"   
+HMSET Pharmacist5 name "Pharmacist5"  
+
+--Patient table
+HMSET Patient1 name "Patient1" 
+HMSET Patient1 born "1997"
+HMSET Patient1 disease "Bronchitis"
+HMSET Patient1 doctor_name "Doctor1"
+
+HMSET Patient2 name "Patient2" 
+HMSET Patient2 born "1985"
+HMSET Patient2 disease "Diabetes"
+HMSET Patient2 doctor_name "Doctor1"
+
+HMSET Patient3 name "Patient3" 
+HMSET Patient3 born "1987"
+HMSET Patient3 disease "High Fever"
+HMSET Patient3 doctor_name "Doctor2"
+
+HMSET Patient4 name "Patient4" 
+HMSET Patient4 born "1992"
+HMSET Patient4 disease "ligament tear"
+HMSET Patient4 disease "Fever"
+HMSET Patient4 doctor_name "Doctor4"
+HMSET Patient4 doctor_name "Doctor3"
+
+
+---Medication table
+HMSET Patient1 name "Patient5" 
+HMSET Patient1 born "2000"
+HMSET Patient1 disease "Malaria"
+HMSET Patient1 doctor_name "Doctor5"
+
+HMSET Medication1 name "Medication1_Pat1" 
+HMSET Medication1 patient_name "Patient1"
+HMSET Medication1 disease "Bronchitis"
+HMSET Medication1 doctor_name "Doctor1"
+HMSET Medication1 medicine "Bronchial Soothe"
+HMSET Medication1 pharmacist_name "Pharmacist2"
+
+HMSET Medication2 name "Medication2_Pat2" 
+HMSET Medication2 patient_name "Patient2"
+HMSET Medication2 disease "Diabetes"
+HMSET Medication2 doctor_name "Doctor1"
+HMSET Medication2 medicine "Metformin"
+HMSET Medication2 medicine "Glucophage"
+HMSET Medication2 pharmacist_name "Pharmacist1"
+
+HMSET Medication3 name "Medication3_Pat3" 
+HMSET Medication3 patient_name "Patient3"
+HMSET Medication3 disease "High Fever"
+HMSET Medication3 doctor_name "Doctor2"
+HMSET Medication3 medicine "Aspirin"
+HMSET Medication3 pharmacist_name "Pharmacist3"
+
+HMSET Medication4 name "Medication4_Pat4" 
+HMSET Medication4 patient_name "Patient4"
+HMSET Medication4 disease "ligament tear"
+HMSET Medication4 doctor_name "Doctor3"
+HMSET Medication4 medicine "Paracetamol"
+HMSET Medication4 pharmacist_name "Pharmacist4"
+
+HMSET Medication5 name "Medication5_Pat4" 
+HMSET Medication5 patient_name "Patient4"
+HMSET Medication5 disease "Fever"
+HMSET Medication5 doctor_name "Doctor4"
+HMSET Medication5 medicine "Paracetamol"
+HMSET Medication5 pharmacist_name "Pharmacist3"
+
+HMSET Medication6 name "Medication6_Pat5" 
+HMSET Medication6 patient_name "Patient5"
+HMSET Medication6 disease "Malaria"
+HMSET Medication6 doctor_name "Doctor5"
+HMSET Medication6 medicine "Atovaquone"
+HMSET Medication6 pharmacist_name "Pharmacist5"
+
+
+
+

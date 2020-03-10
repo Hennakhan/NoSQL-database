@@ -1,0 +1,29 @@
+Connection
+Open server
+
+Connect to client
+type on cmd
+redis-cli.exe
+redis-cli -h 127.0.0.1 -p 6379 -a "mypass"
+
+Insert more password
+
+CONFIG SET requirepass doctor
+CONFIG SET requirepass nurse
+CONFIG SET requirepass pharmacist
+
+Now you can login with password doctor
+
+redis-cli -h 127.0.0.1 -p 6379 -a "doctor"
+
+
+Another way to login
+redis-cli.exe
+
+auth doctor
+
+Test 
+Hgetall Doctor1 
+
+Hget Doctor1 name
+

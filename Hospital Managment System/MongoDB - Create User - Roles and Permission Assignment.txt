@@ -1,0 +1,158 @@
+
+
+--create users and roles
+db.createUser(
+  {
+    user: "useradmin",
+    pwd: "123",
+    roles: [ { role: "dbOwner", db: "Hospital" } ]
+  }
+)
+
+db.createRole({
+  role: "doctor",
+  privileges: [
+       { resource: { db: "Hospital" , collection: "Medication" },
+         actions: [ "find", "update", "insert", "remove" ] },
+       { resource: { db: "Hospital", collection: "Patient" },
+         actions: [ "insert", "update", "find" ] },
+
+  ],
+  roles: []
+})
+
+
+
+db.createUser({
+user : 'Doctor01',
+pwd : 'doctor',
+ roles : [ 
+ { role : 'doctor', db : 'Hospital' }] 
+})
+
+db.createUser({
+user : 'Doctor02',
+pwd : 'doctor',
+ roles : [ 
+ { role : 'doctor', db : 'Hospital' }] 
+})
+
+db.createUser({
+user : 'Doctor03',
+pwd : 'doctor',
+ roles : [ { 
+ role : 'doctor', db : 'Hospital' }] 
+})
+
+db.createUser({
+user : 'Doctor04',
+pwd : 'doctor',
+ roles : [ { 
+ role : 'doctor', db : 'Hospital' }] 
+})
+
+db.createUser({
+user : 'Doctor05',
+pwd : 'doctor',
+ roles : [ { 
+ role : 'doctor', db : 'Hospital' }] 
+})
+
+
+db.createRole({
+  role: "nurse",
+  privileges: [
+       { resource: { db: "Hospital" , collection: "Medication" },
+         actions: [ "find"] },
+       { resource: { db: "Hospital", collection: "Patient" },
+         actions: [ "insert", "update", "find" ] },
+
+  ],
+  roles: []
+})
+
+
+--- Create role Nurse assign users and their permission
+
+db.createUser({
+user : 'Nurse01',
+pwd : 'nurse',
+ roles : [ { role : 'nurse', db : 'Hospital' }] 
+})
+
+db.createUser({
+user : 'Nurse02',
+pwd : 'nurse',
+ roles : [ { role : 'nurse', db : 'Hospital' }] 
+})
+
+db.createUser({
+user : 'Nurse03',
+pwd : 'nurse',
+ roles : [ { role : 'nurse', db : 'Hospital' }] 
+})
+
+db.createUser({
+user : 'Nurse04',
+pwd : 'nurse',
+ roles : [ { role : 'nurse', db : 'Hospital' }] 
+})
+
+db.createUser({
+user : 'Nurse05',
+pwd : 'nurse',
+ roles : [ { role : 'nurse', db : 'Hospital' }] 
+})
+
+
+--- Create role Pharmacist assign users and their permission
+
+db.createRole({
+  role: "pharmacist",
+  privileges: [
+       { resource: { db: "Hospital" , collection: "vwMedication" },
+         actions: [ "find"] },
+  ],
+  roles: []
+})
+
+
+db.updateRole(
+    "pharmacist",{
+      privileges:
+          [
+            { resource: { db: "Hospital" , collection: "vwMedication" }, actions: [ "find"] },
+          ],
+      roles: []
+ })
+
+
+db.createUser({
+user : 'Pharmacist01',
+pwd : 'pharma',
+ roles : [ { role : 'pharmacist', db : 'Hospital' }] 
+})
+
+db.createUser({
+user : 'Pharmacist02',
+pwd : 'pharma',
+ roles : [ { role : 'pharmacist', db : 'Hospital' }] 
+})
+
+db.createUser({
+user : 'Pharmacist03',
+pwd : 'pharma',
+ roles : [ { role : 'pharmacist', db : 'Hospital' }] 
+})
+
+db.createUser({
+user : 'Pharmacist04',
+pwd : 'pharma',
+ roles : [ { role : 'pharmacist', db : 'Hospital' }] 
+})
+
+db.createUser({
+user : 'Pharmacist05',
+pwd : 'pharma',
+ roles : [ { role : 'pharmacist', db : 'Hospital' }] 
+})

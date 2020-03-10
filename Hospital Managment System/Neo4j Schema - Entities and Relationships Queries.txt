@@ -1,0 +1,101 @@
+
+--Creating Entities and Their relationship using Cypher Query Language
+
+CREATE (ST_GEORGE_HOSPITAL:Hospital {name:'ST GEORGE HOSPITAL', city:'Nashville', State:'TN'})
+CREATE (Doctor01:Doctor {doctor_id:'Doctor01',doctors_name:'Lauri James',degree:'MD',born:1961})
+CREATE (Doctor02:Doctor {doctor_id:'Doctor02',doctors_name:'John Weaving',degree:'MD',born:1960})
+CREATE (Doctor03:Doctor {doctor_id:'Doctor03',doctors_name:'Lily Greg',degree:'MD',born:1967})
+CREATE (Doctor04:Doctor {doctor_id:'Doctor04',doctors_name:'Lana Kim',degree:'MBBS',born:1965})
+CREATE (Doctor05:Doctor {doctor_id:'Doctor05',doctors_name:'Joel Gold',degree:'MD',born:1952})
+
+--Doctors Relation with Hospital
+CREATE
+  (Doctor01)-[:WORK_FOR]->(ST_GEORGE_HOSPITAL),
+  (Doctor02)-[:WORK_FOR]->(ST_GEORGE_HOSPITAL),
+  (Doctor03)-[:WORK_FOR]->(ST_GEORGE_HOSPITAL),
+  (Doctor04)-[:WORK_FOR]->(ST_GEORGE_HOSPITAL),
+  (Doctor05)-[:WORK_FOR]->(ST_GEORGE_HOSPITAL)
+  
+CREATE (Nurse01:Nurse {nurse_id:'Nurse01',name:'Noah Dry', born:1971})
+CREATE (Nurse02:Nurse {nurse_id:'Nurse02',name:'Cuba cody', born:1968})
+CREATE (Nurse03:Nurse {nurse_id:'Nurse03',name:'River Pollak', born:1957})
+CREATE (Nurse04:Nurse {nurse_id:'Nurse04',name:'J.T. Ryan', born:1943})
+CREATE (Nurse05:Nurse {nurse_id:'Nurse05',name:'Jon Marshall', born:1967})
+
+--Nurses Relation with Hospital
+CREATE
+
+  (Nurse01)-[:WORK_FOR]->(ST_GEORGE_HOSPITAL),
+  (Nurse02)-[:WORK_FOR]->(ST_GEORGE_HOSPITAL),
+  (Nurse03)-[:WORK_FOR]->(ST_GEORGE_HOSPITAL),
+  (Nurse04)-[:WORK_FOR]->(ST_GEORGE_HOSPITAL),
+  (Nurse05)-[:WORK_FOR]->(ST_GEORGE_HOSPITAL)
+  
+CREATE (Pharmacist01:Pharmacist {pharmacist_id:'Pharmacist01',name:'River Ron', pharmacy_id:'Pharmacy01'})
+CREATE (Pharmacist02:Pharmacist {pharmacist_id:'Pharmacist02',name:'Corey Liya', pharmacy_id:'Pharmacy02'})
+CREATE (Pharmacist03:Pharmacist {pharmacist_id:'Pharmacist03',name:'Will Morey', pharmacy_id:'Pharmacy03'})
+CREATE (Pharmacist04:Pharmacist {pharmacist_id:'Pharmacist04',name:'John Duck', pharmacy_id:'Pharmacy04'})
+CREATE (Pharmacist05:Pharmacist {pharmacist_id:'Pharmacist05',name:'Marshall Cam', pharmacy_id:'Pharmacy05'})
+
+CREATE (Patient01:Patient {patient_id:'Patient01',name:'Parker Posey', disease:'Bronchitis',doctor_id:'Doctor01'})
+CREATE (Patient02:Patient {patient_id:'Patient02',name:'Dave Chappelle', disease:'Diabetes',doctor_id:'Doctor01'})
+CREATE (Patient03:Patient {patient_id:'Patient03',name:'Steve Zahn',disease:'High Fever',doctor_id:'Doctor02'})
+CREATE (Patient04:Patient {patient_id:'Patient04',name:'Mary Kale',disease:'ligament tear',doctor_id:'Doctor04, Doctor03'})
+CREATE (Patient05:Patient {patient_id:'Patient05',name:'Marsha Cammeron',disease:'Malaria',doctor_id:'Doctor05'})
+
+
+--Nurses Relation with Patients
+CREATE
+
+  (Nurse01)-[:NURSING]->(Patient01),
+  (Nurse02)-[:NURSING]->(Patient01),
+  (Nurse02)-[:NURSING]->(Patient02),
+  (Nurse03)-[:NURSING]->(Patient02),
+  (Nurse03)-[:NURSING]->(Patient03),
+  (Nurse04)-[:NURSING]->(Patient03),
+  (Nurse05)-[:NURSING]->(Patient04),
+  (Nurse05)-[:NURSING]->(Patient05)
+
+
+--Doctors Relation with Patients
+CREATE
+
+  (Doctor01)-[:TREATING]->(Patient01),
+  (Doctor01)-[:TREATING]->(Patient02),
+  (Doctor02)-[:TREATING]->(Patient03),
+  (Doctor03)-[:TREATING]->(Patient04),
+  (Doctor04)-[:TREATING]->(Patient04),
+  (Doctor05)-[:TREATING]->(Patient05)
+  
+ 
+CREATE (Medication01:Medication {name:'Medication01_Pat01',patient_id:'Patient01',disease:'Bronchitis',doctor_id:'Doctor01', Medicine: 'Bronchial Soothe',pharmacist_id:'Pharmacist02'})
+CREATE (Medication02:Medication {name:'Medication02_Pat02',patient_id:'Patient02',disease:'Diabetes',doctor_id:'Doctor01',Medicine1:'Metformin', Medicine2:'Glucophage',pharmacist_id:'Pharmacist01'})
+CREATE (Medication03:Medication {name:'Medication03_Pat03',patient_id:'Patient03',disease:'High Fever',doctor_id:'Doctor02',Medicine:'Aspirin',pharmacist_id:'Pharmacist03'})
+CREATE (Medication04:Medication {name:'Medication04_Pat04',patient_id:'Patient04',disease:'ligament tear',doctor_id:'Doctor03',Medicine:'Paracetamol',pharmacist_id:'Pharmacist04'})
+CREATE (Medication05:Medication {name:'Medication05_Pat04',patient_id:'Patient04',disease:'Fever',doctor_id:'Doctor04',Medicine1:'Aspirin',pharmacist_id:'Pharmacist03'})
+CREATE (Medication06:Medication {name:'Medication06_Pat05',patient_id:'Patient05',disease:'Malaria',doctor_id:'Doctor05',Medicine:'Atovaquone',pharmacist_id:'Pharmacist05'})
+
+
+--Medication and Patients Relation 
+CREATE
+  (Medication01)-[:TREATMENT]->(Patient01),
+  (Medication02)-[:TREATMENT]->(Patient02),
+  (Medication03)-[:TREATMENT]->(Patient03),
+  (Medication04)-[:TREATMENT]->(Patient04),
+  (Medication05)-[:TREATMENT]->(Patient04),
+  (Medication06)-[:TREATMENT]->(Patient05)
+  
+--Pharmacist and Patients relation
+CREATE
+
+  (Pharmacist02)-[:Pharmacy]->(Patient01),
+  (Pharmacist01)-[:Pharmacy]->(Patient02),
+  (Pharmacist03)-[:Pharmacy]->(Patient03),
+  (Pharmacist03)-[:Pharmacy]->(Patient04),
+  (Pharmacist04)-[:Pharmacy]->(Patient04),
+  (Pharmacist05)-[:Pharmacy]->(Patient05)
+  
+
+
+
+

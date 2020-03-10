@@ -1,0 +1,36 @@
+Test Cases
+
+List all permissions of doctor;
+
+List all permissions of nurse;
+
+List all permissions of pharmacist;
+
+Logged in as Nurse1
+update hospital.Medication Set Disease = 'High Fever' where Med_ID = 1 and pharmacist_ID = 2; //Not Authorised
+
+Logged in as Pharmacist1
+Select * from Hospital.vwMedication; //Didnt have access until access to Hospital.Medication was provided
+
+INSERT INTO Hospital.Medication(Med_ID, Patient_ID,Name,Disease,Doctor_ID,Medicine1, Medicine2,Pharmacist_ID)
+VALUES( 7, 4,'Patient7','Jaundice, 5, 'Atovaquone', NULL,5); no permission. //no permission
+
+
+Logged in as Doctor1
+
+--Insert Query
+INSERT INTO Hospital.Patient(ID,Name,Disease,Doctor_ID)VALUES( 7, 'Patient7', 'Jaundice', 5 ); //Successful
+
+INSERT INTO Hospital.Medication(Med_ID, Patient_ID,Name,Disease,Doctor_ID,Medicine1, Medicine2,Pharmacist_ID)VALUES( 7, 4,'Patient7','Jaundice', 5, 'Atovaquone', NULL,5); no permission. // unsuccessful user should have access Modify permission on vwMedication
+
+--Read Query
+Select * from Hospital.Medication;
+
+Select * from Hospital.Patient;
+
+--Update Query
+Grant Modify on Hospital.vwMedication To Doctor;
+
+update hospital.Medication Set Disease = 'High Fever' where Med_ID = 1 and pharmacist_ID = 2; //successful 
+
+

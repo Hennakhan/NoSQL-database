@@ -1,0 +1,177 @@
+--Creating Collection and Documents using JSON
+
+db.createCollection("Doctor")
+db.createCollection("Patient")
+db.createCollection("Pharmacist")
+db.createCollection("Medication")
+db.createCollection("Nurse")
+
+db.Doctor.insert(
+	{
+	'name':'Doctor01',
+	'degree':'MD',
+	'born':1967
+	})
+db.Doctor.insert(
+	{
+	'name':'Doctor02',
+	'degree':'MBBS',
+	'born':1985
+	})
+db.Doctor.insert(
+	{
+	'name':'Doctor03',
+	'degree':'MD',
+	'born':1986
+	})
+db.Doctor.insert(	
+	{
+	'name':'Doctor04',
+	'degree':'MD',
+	'born':1960
+	})
+db.Doctor.insert(
+	{
+	'name':'Doctor05',
+	'degree':'MD',
+	'born':1971
+	})
+
+db.Nurse.insert(
+	{
+	'name':'Nurse01'
+	})
+db.Nurse.insert(
+	{
+	'name':'Nurse02'
+	})
+db.Nurse.insert(
+	{
+	'name':'Nurse03'
+	})
+db.Nurse.insert(
+	{
+	'name':'Nurse04'
+	})
+db.Nurse.insert(
+	{
+	'name':'Nurse05'
+	})
+
+db.Pharmacist.insert(
+	{
+	'name':'pharmacist01'
+	})
+db.Pharmacist.insert(
+	{
+	'name':'pharmacist02'
+	})
+db.Pharmacist.insert(
+	{
+	'name':'pharmacist03'
+	})
+db.Pharmacist.insert(
+	{
+	'name':'pharmacist04'
+	})
+db.Pharmacist.insert(
+	{
+	'name':'pharmacist05'
+	})
+
+db.Patient.insert(
+	{
+	'name':'patient01',
+	'born':1997,
+	'disease':'Bronchitis',
+	'doctor_id':'Doctor01'
+	}
+	)
+db.Patient.insert(
+	{
+	'name':'patient02',
+	'born':1987,
+	'disease':'Diabetes',
+	'doctor_id':'Doctor01'
+	})
+db.Patient.insert(
+	{
+	'name':'patient03',
+	'born':1969,
+	'disease':'High Fever',
+	'doctor_id':'Doctor02'
+	})
+db.Patient.insert(
+	{
+	'name':'patient04',
+	'born':1985,
+	'disease':'ligament tear, Fever',
+	'doctor_id':'Doctor04, Doctor03'
+	})
+db.Patient.insert(
+	{
+	'name':'patient05',
+	'born':2000,
+	'disease':'Malaria',
+	'doctor_id':'Doctor05'
+	})
+
+db.Medication.insert(
+	{
+		'name':'Medication01_Pat01',
+		'patient_id':'Patient01',
+		'disease':'Bronchitis',
+		'doctor_id':'Doctor01',
+		'medicine': 'Bronchial Soothe',
+		'pharmacist_id':'Pharmacist02'
+	})
+db.Medication.insert(
+	{
+		'name':'Medication01_Pat02',
+		'patient_id':'Patient02',
+		'disease':'Diabetes',
+		'doctor_id':'Doctor01',
+		'medicine': 'Metformin, Glucophage',
+		'pharmacist_id':'Pharmacist01'
+	})
+db.Medication.insert(
+	{
+		'name':'Medication01_Pat03',
+		'patient_id':'Patient03',
+		'disease':'High Fever',
+		'doctor_id':'Doctor02',
+		'medicine': 'Aspirin',
+		'pharmacist_id':'Pharmacist03'
+		
+	})
+db.Medication.insert(
+	{
+		'name':'Medication01_Pat04',
+		'patient_id':'Patient04',
+		'disease':'ligament tear',
+		'doctor_id':'Doctor03',
+		'medicine': 'Paracetamol',
+		'pharmacist_id':'Pharmacist04'
+	})
+db.Medication.insert(
+	{
+		'name':'Medication01_Pat04',
+		'patient_id':'Patient04',
+		'disease':'Fever',
+		'doctor_id':'Doctor04',
+		'medicine': 'Aspirin',
+		'pharmacist_id':'Pharmacist03'
+	})
+db.Medication.insert(
+	{
+		'name':'Medication01_Pat05',
+		'patient_id':'Patient05',
+		'disease':'Malaria',
+		'doctor_id':'Doctor05',
+		'medicine': 'Atovaquone',
+		'pharmacist_id':'Pharmacist05'
+	})
+
+--Create view 
+db.createView('vwMedication','Medication',[{ $project : { _id : 0, "Patient":"$patient_id", 
+		" Medicines ":"$medicine","Doctor_ID": "$doctor_id","Pharmacy_ID": "$pharmacist_id"}}])
